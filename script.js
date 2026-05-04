@@ -115,4 +115,28 @@ document.addEventListener('DOMContentLoaded', function () {
             cookieBanner.classList.remove('show');
         });
     }
+
+    // Meta Pixel Event Tracking
+    // 1. Contact event for WhatsApp button
+    const whatsappBtn = document.getElementById('btn-whatsapp-contact');
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function() {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Contact');
+            }
+        });
+    }
+
+    // 2. Lead event for Quote buttons
+    const leadButtons = ['btn-header-lead', 'btn-hero-lead'];
+    leadButtons.forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.addEventListener('click', function() {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead');
+                }
+            });
+        }
+    });
 });
